@@ -5,6 +5,7 @@ TagManager:
   serializedVersion: 3
   tags:
   - Portal
+  - Coin
   layers:
   - Default
   - TransparentFX

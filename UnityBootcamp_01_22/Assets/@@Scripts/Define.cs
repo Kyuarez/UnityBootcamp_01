@@ -2,6 +2,7 @@ public static class Define
 {
     #region Common Tag
     public static readonly string TAG_PORTAL = "Portal";
+    public static readonly string TAG_COIN = "Coin";
     #endregion
 
     #region Common Layer

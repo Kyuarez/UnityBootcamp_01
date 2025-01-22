@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
 
     void Start()
     {
+        scoreData = 0;
         rigid = GetComponent<Rigidbody2D>();                    
     }
 
@@ -59,14 +60,31 @@ public class PlayerController : MonoBehaviour
         if(collision.gameObject.layer == Define.LAYER_GROUND && rigid.linearVelocityY <= 0.01f)
         {
             isJump = false;
-        }   
+        }
+        
+        
     }
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
+        if(collision.gameObject.tag == Define.TAG_COIN)
+        {
+            scoreData += coinScore;
+            CanvasManager._ScoreCanvasController.SetScore(scoreData);
+            collision.gameObject.SetActive(false);
+            
+        }
+
         if(collision.gameObject.tag == Define.TAG_PORTAL)
         {
             Debug.Log("Goal in!");
+            scoreData = 0;
+            CanvasManager._ScoreCanvasController.SetScore(scoreData);
+            
         }
     }
+
+    //게임 매니저 없어서 그냥 임시로 만듦! ㅋ
+    private int scoreData = 0;
+    private const int coinScore = 5;
 }
