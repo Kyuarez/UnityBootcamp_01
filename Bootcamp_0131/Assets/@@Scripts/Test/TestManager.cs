@@ -6,39 +6,24 @@ using UnityEngine.UI;
 /// </summary>
 public class TestManager : MonoBehaviour
 {
-    CircleMove circleData;
+    private static TestManager _instance;
+    public static TestManager Instance { get { return _instance; } }
 
-    Button btn_lerp;
-    Button btn_moveToward;
-    Button btn_slerp;
-    Button btn_damage;
-    Button btn_heal;
+    private CircleMove circleData;
+    public CircleMove CircleData {  get { return circleData; } }
 
     private void Awake()
     {
+        if(_instance == null)
+        {
+            _instance = this;
+            DontDestroyOnLoad(gameObject);
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
         circleData = gameObject.GetComponent<CircleMove>();
-
-        #region TempCode
-        btn_lerp = GameObject.Find("Btn_Lerp").GetComponent<Button>();
-        btn_moveToward = GameObject.Find("Btn_MoveTowards").GetComponent<Button>();
-        btn_slerp = GameObject.Find("Btn_Slerp").GetComponent<Button>();
-
-        btn_lerp.onClick.AddListener(() => OnClickMoveChange(MoveType.Lerp));
-        btn_moveToward.onClick.AddListener(() => OnClickMoveChange(MoveType.MoveTowards));
-        btn_slerp.onClick.AddListener(() => OnClickMoveChange(MoveType.Slerp));
-        #endregion
-
     }
-
-    #region OnClick
-    public void OnClickMoveChange(MoveType moveType)
-    {
-        circleData.ChangeMoveType(moveType);
-    }
-
-    public void OnClickHp(int value)
-    {
-        
-    }
-    #endregion
 }
