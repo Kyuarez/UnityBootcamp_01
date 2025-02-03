@@ -1,4 +1,7 @@
-
+/*
+ 2025.02.03
+강사님 팁 : 매개변수 별도 클래스 만들어도 되고(mine), 아니면 object 타입으로 받거나, T(제너릭 사용하세요)
+ */
 public interface Observer
 {
     public void OnNotify(EventType eventType, ObEventData eventData);    

@@ -1,6 +1,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+//업적 시스템, 플레이어 hp 
+
 public class ObserverManager : MonoBehaviour
 {
     #region Singletone
