@@ -16,7 +16,7 @@ public class FaceUI : MonoBehaviour, Observer
 
     void Update()
     {
-        
+           
     }
 
     public void OnNotify(EventType eventType, ObEventData eventData)
